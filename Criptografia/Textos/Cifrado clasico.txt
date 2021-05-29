@@ -1,0 +1,9 @@
+Cifrado clasico - https://es.wikipedia.org/wiki/Cifrado_cl%C3%A1sico
+Un cifrado es un canal para ocultar un mensaje, donde las letras del mensaje son sustituidas o traspuestas por otras letras, pares de letras y 
+algunas veces por muchas letras. En criptografía, el cifrado clásico es un tipo de cifrado que fue usado históricamente, pero que ahora ha caído 
+mayormente en desuso.
+
+Cifrado por transposicion - https://es.wikipedia.org/wiki/Cifrado_por_transposici%C3%B3n
+Estos cifrados cambian de posicion las unidades de texto plano, siguiendo un esquema bien definido; las 'unidades de texto' pueden ser de una sola letra (el caso
+mas comun), pares de letras, trios de letras, mezclas de lo anterior. Es decir que hay una permutacion de 'unidades de texto'.
+Este tipo de algoritmos son de clave simétrica porque es necesario que tanto el que cifra como el que descifra sepan la misma clave para realizar su función.

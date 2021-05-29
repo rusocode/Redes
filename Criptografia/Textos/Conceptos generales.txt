@@ -1,0 +1,133 @@
+CRIPTOGRAFIA - https://es.wikipedia.org/wiki/Criptograf%C3%ADa
+La criptografía (del griego κρύπτos (kryptós), «secreto», y γραφή (graphé), «grafo» o «escritura», literalmente «escritura secreta») se ha definido, 
+tradicionalmente, como el ámbito de la criptología que se ocupa de las técnicas de cifrado o codificado destinadas a alterar las representaciones 
+lingüísticas de ciertos mensajes con el fin de hacerlos ininteligibles a receptores no autorizados.
+
+CIFRADO - https://es.wikipedia.org/wiki/Cifrado_(criptograf%C3%ADa)
+En criptografía, el cifrado es un procedimiento que utiliza un algoritmo de cifrado con cierta clave (clave de cifrado) para transformar un mensaje, sin 
+atender a su estructura lingüística o significado, de tal forma que sea incomprensible o, al menos, difícil de comprender a toda persona que no tenga la 
+clave secreta (clave de descifrado) del algoritmo. Las claves de cifrado y de descifrado pueden ser iguales (criptografía simétrica), distintas (criptografía 
+asimétrica) o de ambos tipos (criptografía híbrida).
+*Preprocesado del texto simple
+En algunas ocasiones, antes de cifrar se realiza un preproceso de adaptación del texto plano. En este proceso se pueden seguir varios pasos que permitan el cifrado 
+o hagan que el cifrado resultante sea más resistente frente a ataques por criptoanálisis. Todos estos cambios se tendrán que tener en cuenta cuando se realice el 
+descifrado para poder obtener el texto plano original. Por ejemplo:
+Conversión a números. 
+Hay algunos algoritmo de cifrado como el RSA que necesitan convertir los caracteres en números. Se pueden seguir distintas estrategias. Veamos algunos ejemplo:
+-Podríamos usar una tabla de conversión de los caracteres en números usando algún sistema de codificación de caracteres como ASCII o Unicode. Por ejemplo 
+el mensaje "Hello World" usando Unicode-8 quedaría:
+48 65 6C 6C 6F 20 57 6F 72 6C 64
+Esta cadena de bytes podríamos convertirla en un número concatenándolos obteniendo:
+0x48656C6C6F20576F726C64=87521618088882533792115812
+*Tipos de cifrado
+-Cifrado Simetrico
+En esquemas de clave simétrica, las claves de cifrado y descifrado son las mismas. Las partes comunicantes deben tener la misma clave para lograr una 
+comunicación segura.
+-Cifrado Asimetrico
+En los esquemas de cifrado de clave pública, la clave de cifrado se publica para que cualquiera pueda usar y cifrar mensajes. Sin embargo, solo la parte 
+receptora tiene acceso a la clave de descifrado que permite leer los mensajes.
+
+CLAVE - https://es.wikipedia.org/wiki/Clave_(criptograf%C3%ADa)
+Una clave, palabra clave o clave criptográfica es una pieza de información que controla la operación de un algoritmo de criptografía. Habitualmente, esta 
+información es una secuencia de números o letras mediante la cual, en criptografía, se especifica la transformación del texto plano en texto cifrado, 
+o viceversa. En sistemas informáticos, la clave sirve para verificar que alguien está autorizado para acceder a un servicio o un sistema.
+*Necesidad de mantener la clave secreta
+Al diseñar un sistema de seguridad, es recomendable asumir que los detalles del algoritmo de cifrado ya son conocidos por el hipotético atacante. Este principio 
+es conocido como Principio de Kerckhoff: "sólo el mantener la clave en secreto proporciona seguridad", o también "el enemigo conoce el sistema". La historia de 
+la criptografía nos da pruebas de que puede ser difícil mantener secretos los detalles de un algoritmo usado extensamente. Una clave suele ser más fácil de 
+proteger (típicamente es solo una pequeña pieza de información) que todo un sistema de cifrado, y es más fácil de substituir si ha sido descubierta. Por 
+tanto, la seguridad de un sistema de cifrado descansa, en la mayoría de los casos, en que la clave permanezca secreta.
+
+#############################
+¡ENTENDIENDO LA ENCRIPTACION! - https://www.youtube.com/watch?v=w-qXxSHuHWo
+La encripatacion es el proceso de transformacion de texto plano en texto cifrado.
+Texto plano:  	        H   E   L   L   O
+ASCII:	               072 069 076 076 079
+		     	    +1 (LLAVE)
+Mensaje encriptado:    073 070 077 077 080
+		        I   F   M   M   P
+			    -1 (LLAVE)
+Mensaje desencriptado: 072 069 076 076 079
+En este ejemplo, el mensaje de texto se cifra añadiendo un digito, esta es la llave de encriptacion, solo el receptor que conoce la llave puede descifrar el
+mensaje y un intruso no.
+
+Puede considerar que este caso es similar a un documento confidencial que se guarda en un maletin antes de enviarlo a su destino. Un ladron o el transportador
+no podra acceder al documento, solo el receptor con la llave del maletin podra abrirlo.
+Un centro de distribucion de llaves muy responsable, asume la responsabilidad de trasnferir la llave del emisor al receptor. Si el receptor utiliza la misma
+llave para abrir la maleta, se denomida ENCRIPTACION SIMETRICA. Si la llave de apertura es diferente a la llave de bloqueo, el metodo de cifrado se denomina
+ENCRIPTACION ASIMETRICA. Sin embargo, ¿que pasa si la llave es robada? Para superar este problema, diseñemos un sistema de bloqueo inteligente.
+En este sistema, cada usuario tiene dos llaves. El usuario envia una de sus llaves al KDC, significa que esta llave esta disponible publicamente, llamemosla
+LLAVE PUBLICA. Sin embargo, nadie comparte la otra llave. Esto es privado para cada uno de los usuarios.
+La parte mas interesante de este nuevo sistema es la CERRADURA. La cerradura se puede cerrar con cualquier llave publica, pero lo misma llave no puede abrir la
+cerradura. Para ello se debe utilizar la llave privada correspondiente. Ninguna otra llave privada o llave publica podra abrir esta cerradura. Con este sistema
+la transferencia de datos es altamente segura, veamos como...
+Si Nina quiere enviar la caja a Alex, Nina solicita la llave publica de Alex al KDC. El KDC comparte la llave publica con Nina y ella cierra la caja. Despues del
+transporte, solo Alex podra abrir la cerradura porque que solo el tiene la llave privada. Este sistema es altamente seguro porque Alex no ha compartido su llave
+privada con nadie. 
+
+En el mundo digital podemos construir el mismo sistema.
+Texto plano:  	        H   E   L   L   O
+ASCII:	               072 069 076 076 079
+		     	      ↓33 (LLAVE PUBLICA)
+Mensaje encriptado:    073 070 077 077 080
+		        I   F   M   M   P
+			      ↓3 (LLAVE PRIVADA)
+Mensaje desencriptado: 072 069 076 076 07
+Aqui este mensaje de "Hello" es encriptado con la llave publica de Alex y es enviado. Solo la llave privada de Alex podra descifrarlo y SOLO Alex podra hacerlo!
+
+Ahora vamos a examinar una propiedad peculiar de la nueva cerradura. Ya hemos visto que una cerradura, cerrada con una llave publica, solo puede abirse con la
+correspondiente llave privada. ¿Pueden estas dos llaves tener una forma aleatorio? Aunque exista tal cerradura, no puede tener una forma aleatoria. Las formas 
+de las llaves deben estar conectadas de alguna manera.
+Del mismo modo en el mundo digital, las llaves que vimos anteriormente deberian estar conectadas, de lo contrario el algoritmo no funcionara.
+Una conexion eficiente entre estas llaves, es que se derivan del producto de dos numeros primos. En el ejemplo anterior, vimos que la llave publica de Alex era
+de echo la multiplicacion de dos numeros primos. La llave privada de Alex, fue uno de lo factores de esta llave publica. El algoritmo que hemos visto, es solo
+representativo. En los algoritmos REALES, los numeros primos no se utilizan directamente para producir llaves publicas y privadas.
+Un algoritmo popular utilizado en el metodo publico/privado se llama RSA.
+
+MIRAR IMAGENES EN RECORTES!
+
+Ahora, podrias tener una pregunta en tu mente ¿por que estamos usando solo numeros primos y no otros numeros?
+El proceso de averiguar los factores de un numero, se conoce como factorizacion. Un hacker siempre utiliza algun metodo de fuerza bruta para factorizar
+los numeros involucrados, asi puede encontrar la llave privada. El algoritmo de factorizacion, funciona bastante rapido cuando los factores no son numeros
+primos. Sin embargo, si los factores son numeros primos, el algoritmo es bastante lento, especialmente cuando los numeros primos son grandes. De esta manera, el
+hacker luchara para obtener su llave privada del algoritmo RSA usando fuerza bruta
+
+No debes tener la impresion de que el metodo de cifrado asimetrico, como la criptografia de llave publica/privada ha sustituido a los metodos de cifrado simetrico.
+Un problema importante con el metodo de cifrado asimetrico, es que es muy intensivo desde el punto de vista informatico. Ya hemos visto en RSA donde el algoritmo
+prevendra un ataque de fuerza bruta solo si los numeros primos son enormes. Esto significa que si usamos RSA directamente, causara un retraso significativo en 
+el intercambio de datos.
+Un remdio inteleligente para este problema, son los sitemas de encriptacion simetrica AES, que son ampliamente utilizados hoy en dia.
+En tales sistemas, utilizando criptografia de llave publica/privada, se intercambia una llave como primer mensaje. Esta llave se conoce como
+llave de sesion y es una llave simetrica. Utilizando esta llave simetrica, las dos partes pueden continuar su intercambio de datos restantes sin 
+necesidad de realizar mas transferencias de llave.
+La llave de sesion se actualiza con frecuencia en funcio del protocolo de comunicacion utilizado, por ejemplo, en wsp para cada mensaje hay una nueva llave
+de sesion. En HTTPS, puede ser por un cierto periodo de tiempo o hasta que termine la sesion. El tamaño de la llave para una llave publica/privada es de unos
+2048 bits, y la encriptacion y desencriptacion lleva mas tiempo en comparacion con los sistemas simetricos que emplean tamaño de llave de unos 256 bits.
+Los mensajes cifrados por la llave simetrica de 256 bits, no son menos seguros que el sistema de llave asimetrica de 2048 bits y son menos intencivos desde el punto
+de vista informatico.
+El enfoque de la llave publica o privada, tambien crea una forma de autentificar un mensaje. Autentificacion significa que el receptor tiene que asegurarse de 
+que el mensaje es del verdadero emisor. Para ello, el emisor encripta el mensaje con su propia llave privada. Ahora, el receptor puede descifrar el mensaje
+con la llave publica del emisor y puede asegurarse de que el mensaje es de el, por que solo el emisor tiene su llave privada. Aqui se dice que el emisor firmo
+el mensaje y no lo encripto, por que cualquiera puede descifrarlo.
+#############################
+
+CRIPTOGRAFIA SIMETRICA - https://es.wikipedia.org/wiki/Criptograf%C3%ADa_sim%C3%A9trica
+Muy lindo todo lo de claves, pero... ¿como hacian para pasar ESA clave de cifrado (clave publica) sin que interviniera un atacante?
+El principal problema con los sistemas de cifrado simétrico no está ligado a su seguridad, sino al intercambio/distribución de claves. Una vez que el remitente 
+y el destinatario hayan intercambiado las claves pueden usarlas para comunicarse con seguridad, pero ¿qué canal de comunicación que sea seguro han usado para 
+transmitirse las claves? Sería mucho más fácil para un atacante intentar interceptar una clave que probar las posibles combinaciones del espacio de claves.
+Para solucionar estos problemas se podrían tener centros de distribución de claves simétricas. Esto podría funcionar por ejemplo para organizaciones militar. Aunque 
+siempre habría un riesgo a posibles fugas de información de que claves son usadas en ciertas comunicaciones. Sin embargo su uso en el sector privado llevaría 
+consigo inevitables fugas, atascos burocráticos y una constante amenaza de filtraciones.
+Para solucionar el problema de distribución de claves y los que de éste se derivan existen la criptografía asimétrica y la criptografía híbrida!!!!!
+
+CRIPTOGRAFIA ASIMETRICA - https://es.wikipedia.org/wiki/Criptograf%C3%ADa_asim%C3%A9trica
+
+---
+
+Cifrar es cerrar, encriptar, encadenar...
+
+Los números primos son aquellos números naturales que solamente se pueden dividir por sí mismos y por 1, es decir, que si intentamos dividirlos por 
+cualquier otro número, el resultado no es entero.
+
+El producto de dos numeros primos genera la LLAVE PUBLICA y los dos numeros primos son la LLAVE PRIVADA.
