@@ -1,3 +1,5 @@
+atr perri
+
 CRIPTOGRAFIA - https://es.wikipedia.org/wiki/Criptograf%C3%ADa
 La criptografía (del griego κρύπτos (kryptós), «secreto», y γραφή (graphé), «grafo» o «escritura», literalmente «escritura secreta») se ha definido, 
 tradicionalmente, como el ámbito de la criptología que se ocupa de las técnicas de cifrado o codificado destinadas a alterar las representaciones 
