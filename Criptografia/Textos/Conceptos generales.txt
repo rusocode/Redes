@@ -1,5 +1,3 @@
-atr perri
-
 CRIPTOGRAFIA - https://es.wikipedia.org/wiki/Criptograf%C3%ADa
 La criptografía (del griego κρύπτos (kryptós), «secreto», y γραφή (graphé), «grafo» o «escritura», literalmente «escritura secreta») se ha definido, 
 tradicionalmente, como el ámbito de la criptología que se ocupa de las técnicas de cifrado o codificado destinadas a alterar las representaciones 
@@ -53,14 +51,15 @@ Mensaje desencriptado: 072 069 076 076 079
 En este ejemplo, el mensaje de texto se cifra añadiendo un digito, esta es la llave de encriptacion, solo el receptor que conoce la llave puede descifrar el
 mensaje y un intruso no.
 
-Puede considerar que este caso es similar a un documento confidencial que se guarda en un maletin antes de enviarlo a su destino. Un ladron o el transportador
+En este ejemplo, la caja con la cerradura es la «clave pública» de Alicia, y la llave de la cerradura es su «clave privada».
+Puede considerar que este caso es similar a un documento confidencial que se guarda en una caja antes de enviarlo a su destino. Un ladron o el transportador
 no podra acceder al documento, solo el receptor con la llave del maletin podra abrirlo.
 Un centro de distribucion de llaves muy responsable, asume la responsabilidad de trasnferir la llave del emisor al receptor. Si el receptor utiliza la misma
-llave para abrir la maleta, se denomida ENCRIPTACION SIMETRICA. Si la llave de apertura es diferente a la llave de bloqueo, el metodo de cifrado se denomina
+llave para abrir la caja, se denomida ENCRIPTACION SIMETRICA. Si la llave de apertura es diferente a la llave de bloqueo, el metodo de cifrado se denomina
 ENCRIPTACION ASIMETRICA. Sin embargo, ¿que pasa si la llave es robada? Para superar este problema, diseñemos un sistema de bloqueo inteligente.
 En este sistema, cada usuario tiene dos llaves. El usuario envia una de sus llaves al KDC, significa que esta llave esta disponible publicamente, llamemosla
 LLAVE PUBLICA. Sin embargo, nadie comparte la otra llave. Esto es privado para cada uno de los usuarios.
-La parte mas interesante de este nuevo sistema es la CERRADURA. La cerradura se puede cerrar con cualquier llave publica, pero lo misma llave no puede abrir la
+La parte mas interesante de este nuevo sistema es la CERRADURA (llave publica). La cerradura se puede cerrar con cualquier llave publica, pero lo misma llave no puede abrir la
 cerradura. Para ello se debe utilizar la llave privada correspondiente. Ninguna otra llave privada o llave publica podra abrir esta cerradura. Con este sistema
 la transferencia de datos es altamente segura, veamos como...
 Si Nina quiere enviar la caja a Alex, Nina solicita la llave publica de Alex al KDC. El KDC comparte la llave publica con Nina y ella cierra la caja. Despues del
