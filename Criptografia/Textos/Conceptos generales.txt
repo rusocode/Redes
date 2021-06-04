@@ -38,6 +38,8 @@ la criptografía nos da pruebas de que puede ser difícil mantener secretos los 
 proteger (típicamente es solo una pequeña pieza de información) que todo un sistema de cifrado, y es más fácil de substituir si ha sido descubierta. Por 
 tanto, la seguridad de un sistema de cifrado descansa, en la mayoría de los casos, en que la clave permanezca secreta.
 
+Una LLAVE PUBLICA es el resultado de la factorizacion de dos numeros primos!
+
 #############################
 ¡ENTENDIENDO LA ENCRIPTACION! - https://www.youtube.com/watch?v=w-qXxSHuHWo
 La encripatacion es el proceso de transformacion de texto plano en texto cifrado.
@@ -58,9 +60,9 @@ llave para abrir la maleta, se denomida ENCRIPTACION SIMETRICA. Si la llave de a
 ENCRIPTACION ASIMETRICA. Sin embargo, ¿que pasa si la llave es robada? Para superar este problema, diseñemos un sistema de bloqueo inteligente.
 En este sistema, cada usuario tiene dos llaves. El usuario envia una de sus llaves al KDC, significa que esta llave esta disponible publicamente, llamemosla
 LLAVE PUBLICA. Sin embargo, nadie comparte la otra llave. Esto es privado para cada uno de los usuarios.
-La parte mas interesante de este nuevo sistema es la CERRADURA. La cerradura se puede cerrar con cualquier llave publica, pero lo misma llave no puede abrir la
-cerradura. Para ello se debe utilizar la llave privada correspondiente. Ninguna otra llave privada o llave publica podra abrir esta cerradura. Con este sistema
-la transferencia de datos es altamente segura, veamos como...
+La parte mas interesante de este nuevo sistema es la CERRADURA. La cerradura se puede cerrar con cualquier llave publica, pero la misma llave no puede abrir la
+cerradura. Para ello se debe utilizar la llave privada correspondiente. Ninguna otra llave privada (PERO SI LA AVERIGUO FACTORIZANDO?) o llave publica podra 
+abrir esta cerradura. Con este sistema la transferencia de datos es altamente segura, veamos como...
 Si Nina quiere enviar la caja a Alex, Nina solicita la llave publica de Alex al KDC. El KDC comparte la llave publica con Nina y ella cierra la caja. Despues del
 transporte, solo Alex podra abrir la cerradura porque que solo el tiene la llave privada. Este sistema es altamente seguro porque Alex no ha compartido su llave
 privada con nadie. 
@@ -71,14 +73,14 @@ ASCII:	               072 069 076 076 079
 		     	      ↓33 (LLAVE PUBLICA)
 Mensaje encriptado:    073 070 077 077 080
 		        I   F   M   M   P
-			      ↓3 (LLAVE PRIVADA)
-Mensaje desencriptado: 072 069 076 076 07
-Aqui este mensaje de "Hello" es encriptado con la llave publica de Alex y es enviado. Solo la llave privada de Alex podra descifrarlo y SOLO Alex podra hacerlo!
+			      ↓3x11 (LLAVE PRIVADA)
+Mensaje desencriptado: 072 069 076 076 079
+Aqui este mensaje de "Hello" es encriptado con la llave publica de Alex y es enviado. Solo la llave privada de Alex podra descifrarlo y SOLO (?) Alex podra hacerlo!
 
 Ahora vamos a examinar una propiedad peculiar de la nueva cerradura. Ya hemos visto que una cerradura, cerrada con una llave publica, solo puede abirse con la
-correspondiente llave privada. ¿Pueden estas dos llaves tener una forma aleatorio? Aunque exista tal cerradura, no puede tener una forma aleatoria. Las formas 
+correspondiente llave privada. ¿Pueden estas dos llaves tener una forma aleatoria? Aunque exista tal cerradura, no puede tener una forma aleatoria. Las formas 
 de las llaves deben estar conectadas de alguna manera.
-Del mismo modo en el mundo digital, las llaves que vimos anteriormente deberian estar conectadas, de lo contrario el algoritmo no funcionara.
+Del mismo modo en el mundo digital, las llaves que vimos anteriormente deberian estar conectadas, de lo contrario el algoritmo no funcionaria.
 Una conexion eficiente entre estas llaves, es que se derivan del producto de dos numeros primos. En el ejemplo anterior, vimos que la llave publica de Alex era
 de echo la multiplicacion de dos numeros primos. La llave privada de Alex, fue uno de lo factores de esta llave publica. El algoritmo que hemos visto, es solo
 representativo. En los algoritmos REALES, los numeros primos no se utilizan directamente para producir llaves publicas y privadas.
@@ -90,7 +92,7 @@ Ahora, podrias tener una pregunta en tu mente ¿por que estamos usando solo nume
 El proceso de averiguar los factores de un numero, se conoce como factorizacion. Un hacker siempre utiliza algun metodo de fuerza bruta para factorizar
 los numeros involucrados, asi puede encontrar la llave privada. El algoritmo de factorizacion, funciona bastante rapido cuando los factores no son numeros
 primos. Sin embargo, si los factores son numeros primos, el algoritmo es bastante lento, especialmente cuando los numeros primos son grandes. De esta manera, el
-hacker luchara para obtener su llave privada del algoritmo RSA usando fuerza bruta
+hacker luchara para obtener su llave privada del algoritmo RSA usando fuerza bruta.
 
 No debes tener la impresion de que el metodo de cifrado asimetrico, como la criptografia de llave publica/privada ha sustituido a los metodos de cifrado simetrico.
 Un problema importante con el metodo de cifrado asimetrico, es que es muy intensivo desde el punto de vista informatico. Ya hemos visto en RSA donde el algoritmo
@@ -122,7 +124,20 @@ consigo inevitables fugas, atascos burocráticos y una constante amenaza de filt
 Para solucionar el problema de distribución de claves y los que de éste se derivan existen la criptografía asimétrica y la criptografía híbrida!!!!!
 
 CRIPTOGRAFIA ASIMETRICA - https://es.wikipedia.org/wiki/Criptograf%C3%ADa_asim%C3%A9trica
+Una analogía con el cifrado de clave pública es la de un buzón con una ranura de correo. La ranura de correo está expuesta y accesible al público; su 
+ubicación (la dirección de la calle) es, en esencia, la clave pública. Alguien que conozca la dirección de la calle puede ir a la puerta y colocar un 
+mensaje escrito a través de la ranura; sin embargo, solo la persona que posee la llave (clave privada) puede abrir el buzón de correo y leer el mensaje.
 
+Una analogía para firmas digitales es el sellado de un sobre con un sello personal. El mensaje puede ser abierto por cualquier persona, pero la presencia 
+del sello autentifica al remitente.
+
+Ejemplo
+"Caja" y "cerradura" son variables, dos datos (en el caso más sencillo, dos números) necesarios ambos para resolver un determinado problema matemático de manera 
+inmediata. Es cierto que teniendo solo la "cerradura" (alguien que interceptase la caja antes de que llegue a David), un cerrajero experto podría abrir la caja 
+sin necesidad de la "llave", pero, en la práctica, un sistema de cifrado competente exhibe una complejidad tal que su resolución, desconociendo la clave privada 
+del destinatario, exige de una potencia computacional o de un coste en tiempo desproporcionadamente mayor al valor esperado del robo de la información (la 
+computación cuántica, por ejemplo, reduciría en mucho dicho coste, volviendo obsoletos no pocos sistemas criptográficos que a día de hoy pueden considerarse 
+efectivamente invulnerables).
 ---
 
 Cifrar es cerrar, encriptar, encadenar...
