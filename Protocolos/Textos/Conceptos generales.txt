@@ -44,7 +44,7 @@ PAQUETE/PDU (Red) El segmento encapsulado es enviado a la capa de red y, es proc
 TRAMA/PDU (Enlace datos) El paquete encapsulado es enviado a la capa de enlaces de datos y, es procesado y transformado un una trama, a este proceso se le denomina encapsulado de la capa de enlaces de datos.
 BIT/PDU (Fisica) Por ultimo, la capa fisica codifica la trama en bits y cada bit es procesado y enviado al medio de transmision.
 -Desencapsulamiento de PDU
-Los bits se decodifican en tramapas, las tramas en paquetes, los paquetes en segmentos, los segmentos en datos y estos son entregados a su destino.
+Los bits se decodifican en tramas, las tramas en paquetes, los paquetes en segmentos, los segmentos en datos y estos son entregados a su destino.
 
 En las redes de computadoras, la direccion MAC es un identificador de 48 bits que corresponde de forma unica a una tarjeta o dispositivo de red. Se la conoce 
 tambien como direccion fisica, y es unica para cada dispositivo. Suele escribirse como numero hexadecimal, como, por ejemplo, 08-00-20-ae-fd-7e o 
